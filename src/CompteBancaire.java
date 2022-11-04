@@ -14,9 +14,9 @@ public class CompteBancaire {
     public void deposer(double montant) {
         if(montant > 0.0) {
             this.solde += montant;
-            Journalisation.getInstance().ajouterLog("Dépôt de " + montant + " sur le compte " + this.numero);
+            Journalisation.getInstance("info").ajouterLog("Dépôt de " + montant + " sur le compte " + this.numero);
         }else {
-            Journalisation.getInstance().ajouterLog("Tentative de dépôt de " + montant + " sur le compte " + this.numero);
+            Journalisation.getInstance("erreur").ajouterLog("Tentative de dépôt de " + montant + " sur le compte " + this.numero);
         }
     }
 
@@ -24,9 +24,9 @@ public class CompteBancaire {
     public void retirer(double montant) {
         if(montant > 0.0 && montant <= this.solde) {
             this.solde -= montant;
-            Journalisation.getInstance().ajouterLog("Retrait de " + montant + " sur le compte " + this.numero);
+            Journalisation.getInstance("info").ajouterLog("Retrait de " + montant + " sur le compte " + this.numero);
         }else {
-            Journalisation.getInstance().ajouterLog("Tentative de retrait de " + montant + " sur le compte " + this.numero);
+            Journalisation.getInstance("erreur").ajouterLog("Tentative de retrait de " + montant + " sur le compte " + this.numero);
         }
     }
 
